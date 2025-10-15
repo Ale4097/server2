@@ -12,53 +12,14 @@ public class Main {
     public static void main(String[] args) throws IOException{
         System.out.println("Hello world!");
         ServerSocket mioServerSocket = new ServerSocket(3000);
+        
         do{
           Socket mioSocket = mioServerSocket.accept();  
           MioThread t = new MioThread(mioSocket);
           t.start();
         }while(true);
-        
-        System.out.println("Benvenuto nel server");
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(mioSocket.getInputStream()));
-        PrintWriter out = new PrintWriter(mioSocket.getOutputStream(), true);
-    
-        out.println("versione 2");
-
-        in.readLine();
-
-        int N1 = Integer.parseInt(in.readLine());
-        int N2 = Integer.parseInt(in.readLine());
-
-        int op = Integer.parseInt(in.readLine());
-        double result = 0;
-
-        do{
-
-        switch (op) {
-                
-                case 1:
-                result = N1 + N2;
-                break;
-
-                case 2:
-                result = N1 - N2;
-                break;
-
-                case 3:
-                result = N1 / N2;
-                break;
-
-                case 4:
-                result = N1 * N2;
-                break;
-            
-        
-            default:
-            break;
-        }
-        out.println(result);
-        }while(true);
-        }
+      
   
+    }
 }

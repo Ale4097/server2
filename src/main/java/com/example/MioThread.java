@@ -19,7 +19,6 @@ public class MioThread extends Thread {
         BufferedReader in = new BufferedReader(new InputStreamReader(mioSocket.getInputStream()));
         PrintWriter out = new PrintWriter(mioSocket.getOutputStream(), true);
     
-        out.println("versione 2");
 
         in.readLine();
 

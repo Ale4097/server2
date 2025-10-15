@@ -12,7 +12,12 @@ public class Main {
     public static void main(String[] args) throws IOException{
         System.out.println("Hello world!");
         ServerSocket mioServerSocket = new ServerSocket(3000);
-        Socket mioSocket = mioServerSocket.accept();
+        do{
+          Socket mioSocket = mioServerSocket.accept();  
+          MioThread t = new MioThread(mioSocket);
+          t.start();
+        }while(true);
+        
         System.out.println("Benvenuto nel server");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(mioSocket.getInputStream()));
@@ -52,15 +57,8 @@ public class Main {
             default:
             break;
         }
-
-
+        out.println(result);
         }while(true);
-        
-            
-            //out.println(result);
-            //mioSocket.close();
-
         }
-   
-    
+  
 }
